@@ -1,0 +1,41 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion androidCompileSdkVersion
+    buildToolsVersion androidBuildToolsVersion
+    defaultConfig {
+        applicationId "com.hucet.fcmapp"
+        minSdkVersion androidMinSdkVersion
+        targetSdkVersion androidTargetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile kotlinDependencies.kotlin
+
+    testCompile testDependencies.junit
+    testCompile testDependencies.robolectric
+    testCompile kotlinDependencies.kotlin_junit
+    testCompile kotlinDependencies.kotlin
+    testCompile kotlinDependencies.kluent
+
+    compile androidSupport.appcompatv7
+
+    compile firebaseDependencies.fcm
+    compile dataDependencies.rxKotlin
+}
+// ADD THIS AT THE BOTTOM
+apply plugin: 'com.google.gms.google-services'
