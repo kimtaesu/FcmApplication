@@ -1,4 +1,4 @@
-package com.hucet.fcmapp.repository
+package com.hucet.fcmapp.model
 
 import android.os.Parcel
 import android.os.Parcelable

@@ -15,16 +15,13 @@ class MyApplication : Application() {
 
     companion object {
         private lateinit var appComponent: AppComponent
-        fun injectGoogleModule(myFirebaseInstanceIDService: MyFirebaseInstanceIDService): GoogleComponent {
-            var c = appComponent.plus(GoogleModule())
-            c.inject(myFirebaseInstanceIDService)
-            return c
+        fun injectGoogleModule(a: MyFirebaseInstanceIDService) {
+            appComponent.plus(GoogleModule()).inject(a)
         }
 
-        fun injectMainActivityComponent(mainActivity: MainActivity): MainActivityComponent {
-            var c = appComponent.plus(MainActivityModule(mainActivity))
-            c.inject(mainActivity)
-            return c
+
+        fun injectMainActivityComponent(a: MainActivity) {
+            appComponent.plus(MainActivityModule(a)).inject(a)
         }
     }
 
@@ -49,3 +46,5 @@ class MyApplication : Application() {
 
 
 }
+
+

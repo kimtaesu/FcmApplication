@@ -8,11 +8,12 @@ import retrofit2.http.Headers
 import retrofit2.http.POST
 
 
-interface ServerRepository {
-    @POST("post")
+interface FCMRepository {
+
+    @POST("fcm/send")
     @Headers(
-            "Content-Type: application/json; charset=utf-8"
+            "Content-Type: application/json"
     )
-    fun saveGoogleToken(@Body request: GoogleToken): Observable<Response<GoogleTokenResponse>>
+    fun sendMessage(@Body request: FCMMesage): Observable<Response<FCMResponse>>
 
 }

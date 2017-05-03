@@ -1,5 +1,6 @@
 package com.hucet.fcmapp.di.google
 
+import com.hucet.fcmapp.repository.FCMRepository
 import com.hucet.fcmapp.repository.ServerRepository
 import com.hucet.fcmapp.service.FirebaseTokenService
 import com.hucet.fcmapp.service.GooglePresenter
@@ -7,6 +8,7 @@ import com.hucet.fcmapp.service.GooglePresenterImpl
 import com.hucet.fcmapp.service.PreferenceService
 import dagger.Module
 import dagger.Provides
+import javax.inject.Named
 
 @Module
 class GoogleModule() {
@@ -21,9 +23,11 @@ class GoogleModule() {
     @Provides
     fun provideGooglePresenter(tokenService: FirebaseTokenService,
                                preferenceService: PreferenceService,
-                               repository: ServerRepository): GooglePresenter {
+                               repository: ServerRepository,
+                               fcmRepository: FCMRepository): GooglePresenter {
         return GooglePresenterImpl(tokenService,
                 preferenceService,
-                repository);
+                repository,
+                fcmRepository);
     }
 }

@@ -1,5 +1,6 @@
 package com.hucet.fcmapp.di.google
 
+import com.hucet.fcmapp.MainActivity
 import com.hucet.fcmapp.MyFirebaseInstanceIDService
 import dagger.Subcomponent
 

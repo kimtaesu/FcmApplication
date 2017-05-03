@@ -1,5 +1,6 @@
 package com.hucet.fcmapp.presenter
 
+import android.util.Log
 import com.hucet.fcmapp.MainActivity
 import com.hucet.fcmapp.service.PreferenceService
 import kotlinx.android.synthetic.main.activity_main.*
@@ -12,5 +13,6 @@ class MainActivityPresenterImpl constructor(val mainActivity: MainActivity, val 
 
     override fun updateTokenUi() {
         mainActivity.dis_token.text = prefer.getGoogleInstanceToken()
+        Log.e("!!!!!!!!!!!!!!", prefer.getGoogleInstanceToken())
     }
 }

@@ -2,6 +2,8 @@ android {
     productFlavors {
         local {
             buildConfigField "String", "SERVER_URL", '"https://httpbin.org/"'
+            buildConfigField "String", "FCM_URL", '"https://fcm.googleapis.com/"'
+            buildConfigField "String", "FCM_API_KEY", '"AAAAeBtoju8:APA91bG6jhT-BRq1yw2eh8mWF908SMI38aLomsAjdmudoWKVlK26iedH7YRDIsLK-RUF-kHy8ReiJABz_kOoI4vPelfT3tsZZ_CUqgHg0t_Nuv0pqzSYZRwgupximsd58jQIH-hjtydU"'
         }
 //        server {
 //            buildConfigField "String", "host", '"192.168.25.33"'
