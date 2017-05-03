@@ -1,9 +1,12 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion androidCompileSdkVersion
     buildToolsVersion androidBuildToolsVersion
     defaultConfig {
+        vectorDrawables.useSupportLibrary = true
         applicationId "com.hucet.fcmapp"
         minSdkVersion androidMinSdkVersion
         targetSdkVersion androidTargetSdkVersion
@@ -17,25 +20,46 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+//     ?? ???
+    compileOptions.encoding = 'windows-1251'
 }
-
+kapt {
+    generateStubs = true
+}
+configurations.all {
+    resolutionStrategy.force 'com.android.support:support-annotations:25.0.1'
+}
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile testDependencies.junit
+    androidTestCompile kotlinDependencies.kotlin_junit
+    androidTestCompile kotlinDependencies.kotlin
+
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support.test:rules:0.5'
+    // add this for intent mocking support
+    androidTestCompile('com.android.support.test.espresso:espresso-intents:2.2.2')
+
+    // add this for webview testing support
+    androidTestCompile 'com.android.support.test.espresso:espresso-web:2.2.2'
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile kotlinDependencies.kotlin
 
     testCompile testDependencies.junit
-    testCompile testDependencies.robolectric
     testCompile kotlinDependencies.kotlin_junit
     testCompile kotlinDependencies.kotlin
     testCompile kotlinDependencies.kluent
+//    testCompile testDependencies.robolectric
 
     compile androidSupport.appcompatv7
 
     compile firebaseDependencies.fcm
     compile dataDependencies.rxKotlin
+
+    compile diDependencies.dagger
+    provided diDependencies.javaxAnnotation
+    kapt diDependencies.daggerCompiler
 }
 // ADD THIS AT THE BOTTOM
 apply plugin: 'com.google.gms.google-services'

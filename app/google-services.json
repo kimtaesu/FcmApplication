@@ -225,9 +225,9 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:515855912687:android:cb928aefc8f6d0a7",
+        "mobilesdk_app_id": "1:515855912687:android:d7ffffe27d0fc53b",
         "android_client_info": {
-          "package_name": "com.hucet.fcm"
+          "package_name": "camera.hucet.com.myapplication"
         }
       },
       "oauth_client": [

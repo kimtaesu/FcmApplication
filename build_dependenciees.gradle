@@ -25,7 +25,7 @@ ext {
     androidAnnotationsVersion = '21.0.3'
     arrowVersion = '1.0.0'
 
-    daggerVersion = '2.9'
+    daggerVersion = '2.10'
 
     retrofitVersion = '2.2.0'
 
@@ -34,8 +34,10 @@ ext {
 
     butterknifeVersion = '8.5.1'
     googleFactoryVersion = '1.0-beta4'
-    lanDependencies = [
-
+    diDependencies = [
+            daggerCompiler : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger         : "com.google.dagger:dagger:${daggerVersion}",
+            javaxAnnotation: "org.glassfish:javax.annotation:${javaxAnnotationVersion}",
     ]
     androidSupport = [
             appcompatv7: "com.android.support:appcompat-v7:${androidSupportVersion}",
@@ -46,10 +48,9 @@ ext {
     bindDependencies = [
             butterknife             : "com.jakewharton:butterknife:${butterknifeVersion}",
             butterknifeAnnoProcessor: "com.jakewharton:butterknife-compiler:${butterknifeVersion}",
-            googleFactory           : "com.google.auto.factory:auto-factory:${googleFactoryVersion}",
-            daggerCompiler          : "com.google.dagger:dagger-compiler:${daggerVersion}",
-            dagger                  : "com.google.dagger:dagger:${daggerVersion}",
-            javaxAnnotation         : "org.glassfish:javax.annotation:${javaxAnnotationVersion}",
+//            googleFactory           : "com.google.auto.factory:auto-factory:${googleFactoryVersion}",
+
+
     ]
 
     dataDependencies = [
