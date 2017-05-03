@@ -30,11 +30,11 @@ class MyFirebaseInstanceIDService : FirebaseInstanceIdService() {
         googlePresenter.updateGoogleToken()
                 .blockingSubscribe(
                         { token ->
+                            //                          TODO (developer)
                         },
                         { error ->
-                            Toast.makeText(this, "Token? ????? ???????.", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Can't get a token from google", Toast.LENGTH_SHORT).show()
                         })
         Log.d("TokenRefresh", "Refreshed tokenService: " + refreshedToken!!)
     }
-
 }
