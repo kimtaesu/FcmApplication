@@ -30,9 +30,7 @@ configurations.all {
     resolutionStrategy.force 'com.android.support:support-annotations:25.0.1'
 }
 dependencies {
-    androidTestCompile testDependencies.junit
-    androidTestCompile kotlinDependencies.kotlin_junit
-    androidTestCompile kotlinDependencies.kotlin
+
 
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.android.support.test:rules:0.5'
@@ -44,23 +42,32 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile kotlinDependencies.kotlin
+//    Kotlin
+    compile kotlinDep.kotlin
 
-    testCompile testDependencies.junit
-    testCompile kotlinDependencies.kotlin_junit
-    testCompile kotlinDependencies.kotlin
-    testCompile kotlinDependencies.kluent
-//    testCompile testDependencies.robolectric
+//    Test
+    testCompile testDep.junit
+    testCompile kotlinDep.kotlin_junit
+    testCompile kotlinDep.kluent
 
-    compile androidSupport.appcompatv7
+    androidTestCompile kotlinDep.kotlin_junit
+    androidTestCompile kotlinDep.kluent
+    androidTestCompile testDep.junit
 
-    compile firebaseDependencies.fcm
-    compile dataDependencies.rxKotlin
-    compile dataDependencies.rxAndroid
+//  Android Support
+    compile androidSupportDep.appcompatv7
 
-    compile diDependencies.dagger
-    provided diDependencies.javaxAnnotation
-    kapt diDependencies.daggerCompiler
+//    Firebase
+    compile firebaseDep.fcm
+
+//    Rx
+    compile rxDep.rxKotlin
+    compile rxDep.rxAndroid
+
+//     Dagger
+    compile injectDep.dagger
+    provided injectDep.javaxAnnotation
+    kapt injectDep.daggerCompiler
 }
 // ADD THIS AT THE BOTTOM
 apply plugin: 'com.google.gms.google-services'

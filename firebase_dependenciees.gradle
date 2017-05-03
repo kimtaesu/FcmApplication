@@ -7,7 +7,7 @@ allprojects {
 }
 ext {
     google_play_version = '10.2.1'
-    firebaseDependencies = [
+    firebaseDep = [
             crash        : "com.google.firebase:firebase-crash:${google_play_version}",
             remote_config: "com.google.firebase:firebase-config:${google_play_version}",
             appindexing  : "com.google.firebase:firebase-appindexing:${google_play_version}",
