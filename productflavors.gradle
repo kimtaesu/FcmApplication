@@ -1,0 +1,11 @@
+android {
+    productFlavors {
+        local {
+            buildConfigField "String", "SERVER_URL", '"https://httpbin.org/"'
+        }
+//        server {
+//            buildConfigField "String", "host", '"192.168.25.33"'
+//            buildConfigField "int", "host", '8010'
+//        }
+    }
+}

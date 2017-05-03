@@ -1,25 +1,29 @@
 package com.hucet.fcmapp.di.google
 
-import com.hucet.fcmapp.di.presenter.GooglePresenter
-import com.hucet.fcmapp.di.presenter.GooglePresenterImpl
-import com.hucet.fcmapp.service.GoogleTokenService
+import com.hucet.fcmapp.repository.ServerRepository
+import com.hucet.fcmapp.service.FirebaseTokenService
+import com.hucet.fcmapp.service.GooglePresenter
+import com.hucet.fcmapp.service.GooglePresenterImpl
 import com.hucet.fcmapp.service.PreferenceService
 import dagger.Module
 import dagger.Provides
 
 @Module
-class GoogleTokenModule {
+class GoogleModule() {
 
     @GoogleScope
     @Provides
-    fun provideToken(): GoogleTokenService {
-        return GoogleTokenService()
+    fun provideFirebaseToken(): FirebaseTokenService {
+        return FirebaseTokenService()
     }
 
     @GoogleScope
     @Provides
-    fun provideGooglePresenter(tokenService: GoogleTokenService,
-                               preferenceService: PreferenceService): GooglePresenter {
-        return GooglePresenterImpl(tokenService, preferenceService)
+    fun provideGooglePresenter(tokenService: FirebaseTokenService,
+                               preferenceService: PreferenceService,
+                               repository: ServerRepository): GooglePresenter {
+        return GooglePresenterImpl(tokenService,
+                preferenceService,
+                repository);
     }
 }

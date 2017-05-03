@@ -23,8 +23,6 @@ ext {
             daggerCompiler          : "com.google.dagger:dagger-compiler:${daggerVersion}",
             dagger                  : "com.google.dagger:dagger:${daggerVersion}",
             javaxAnnotation         : "org.glassfish:javax.annotation:${javaxAnnotationVersion}",
-
-
     ]
 
 //    ImageLoader
@@ -50,6 +48,7 @@ ext {
     retrofitVersion = '2.2.0'
     httpDep = [
             okHttp               : "com.squareup.okhttp3:okhttp:${okHttpVersion}",
+            okHttpLogger         : "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}",
             gson                 : "com.google.code.gson:gson:${gsonVersion}",
             retrofit             : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
             retrofitRxjavaAdapter: "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}",
@@ -59,7 +58,7 @@ ext {
 //    Test
     junitVersion = '4.12'
     testDep = [
-            junit      : "junit:junit:${junitVersion}",
+            junit: "junit:junit:${junitVersion}",
     ]
 //  Android Test
 
@@ -80,7 +79,7 @@ ext {
 //    Kotlin
     kotlin_version = '1.1.2-2'
     kotlinDep = [
-            kotlin : "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}",
+            kotlin        : "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}",
             kotlin_junit  : "org.jetbrains.kotlin:kotlin-test-junit:${kotlin_version}",
             kluent        : "org.amshove.kluent:kluent:1.14",
             mockito_kotlin: "com.nhaarman:mockito-kotlin:1.4.0",

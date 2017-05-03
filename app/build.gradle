@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply from : '../productflavors.gradle'
 android {
     compileSdkVersion androidCompileSdkVersion
     buildToolsVersion androidBuildToolsVersion
@@ -20,7 +21,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-//     ?? ???
     compileOptions.encoding = 'windows-1251'
 }
 kapt {
@@ -68,6 +68,13 @@ dependencies {
     compile injectDep.dagger
     provided injectDep.javaxAnnotation
     kapt injectDep.daggerCompiler
+
+    //     Http
+    compile httpDep.okHttp
+    compile httpDep.okHttpLogger
+    compile httpDep.converter_moshi
+    compile httpDep.retrofit
+    compile httpDep.retrofitRxjavaAdapter
 }
 // ADD THIS AT THE BOTTOM
 apply plugin: 'com.google.gms.google-services'

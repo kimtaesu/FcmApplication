@@ -5,15 +5,12 @@ import com.hucet.fcmapp.exception.TokenNullException
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 
-
-class GoogleTokenService {
+class FirebaseTokenService {
     fun getToken(): Observable<String> {
-
         val token = FirebaseInstanceId.getInstance().token
         return Observable.just(token!!)
                 .map { token ->
-                    //                    token ?: throw TokenNullException("Token is null")
-                    throw TokenNullException("Token is null")
+                    token ?: throw TokenNullException("Token is null")
                     token
                 }
                 .subscribeOn(Schedulers.io())
