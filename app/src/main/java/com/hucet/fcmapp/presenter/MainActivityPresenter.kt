@@ -13,6 +13,5 @@ class MainActivityPresenterImpl constructor(val mainActivity: MainActivity, val 
 
     override fun updateTokenUi() {
         mainActivity.dis_token.text = prefer.getGoogleInstanceToken()
-        Log.e("!!!!!!!!!!!!!!", prefer.getGoogleInstanceToken())
     }
 }
