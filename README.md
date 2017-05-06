@@ -8,10 +8,43 @@
 - RxAndroid
 - Dagger 2
 - Kotlin Android Extensions
-# registering a token 
-![](https://github.com/kimtaesu/FcmApplication/blob/master/document/fcm_logic.jpg)
+# flow of registering token
+FirebaseTokenService.kt
+```
+fun getToken(): Observable<String> {
+        val token = FirebaseInstanceId.getInstance().token
+        return Observable.just(token!!)
+                .map { token ->
+                    token ?: throw TokenNullException("Token is null")
+                    token
+                }
+                .subscribeOn(Schedulers.io())
+}
+```
+GooglePresenterImpl.kt
+```
+override fun updateGoogleToken(): Observable<GoogleTokenResponse> {
+        val token = preferenceService.getGoogleInstanceToken()
+        if (null != token) {
+            return Observable.just(GoogleTokenResponse(token))
+        }
 
-# Graph Dependecies injection 
+        return tokenService.getToken()
+                .map { token ->
+                    preferenceService.setGoogleInstanceToken(token)
+                    GoogleToken(token)
+                }
+                .concatMap { token ->
+                    repository.saveGoogleToken(token)
+                            .onDefaultThread()
+                            .ifHttpFailThrowException()
+                }
+                .map(Response<GoogleTokenResponse>::body)
+    }
+```
+
+
+# Graph of Dependecies injection 
 
 ![](https://github.com/kimtaesu/FcmApplication/blob/master/document/graph_di.jpg)
 *** 
